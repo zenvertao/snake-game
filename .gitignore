@@ -1,0 +1,16 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors/IDE
+.vscode/
+.idea/
+
+# Node / tooling (future-proof)
+node_modules/
+dist/
+build/
+
+# Local env/config
+.env*
+*.local

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>贪吃蛇 Snake</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  </head>
+  <body class="theme-modern">
+    <a class="github-link desktop-only" href="#" aria-label="GitHub" title="GitHub">
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.49.5.092.682-.217.682-.483 0-.237-.009-.866-.014-1.7-2.782.604-3.37-1.19-3.37-1.19-.454-1.153-1.11-1.461-1.11-1.461-.908-.62.069-.607.069-.607 1.003.07 1.53 1.03 1.53 1.03.892 1.528 2.341 1.086 2.91.83.091-.646.35-1.086.636-1.338-2.22-.253-4.555-1.11-4.555-4.944 0-1.091.39-1.985 1.03-2.684-.103-.253-.447-1.272.098-2.65 0 0 .84-.269 2.75 1.025A9.56 9.56 0 0 1 12 6.844c.852.004 1.71.115 2.51.338 1.91-1.294 2.749-1.025 2.749-1.025.546 1.378.202 2.397.1 2.65.64.699 1.03 1.593 1.03 2.684 0 3.842-2.339 4.687-4.566 4.936.36.31.681.923.681 1.86 0 1.342-.012 2.423-.012 2.753 0 .269.18.58.688.481C19.138 20.162 22 16.415 22 12c0-5.523-4.477-10-10-10Z"/>
+      </svg>
+    </a>
+    <div id="game-wrapper">
+      <div id="top-hud">
+        <div class="hud-col hud-left">
+          <div id="hud-score">
+            <span>分数</span>
+            <strong id="score-mobile">0</strong>
+          </div>
+          <div id="hud-level">
+            <span>速度</span>
+            <strong id="level-mobile">1</strong>
+          </div>
+        </div>
+        <div class="hud-col hud-right">
+          <div class="mobile-theme-switch">
+            <button id="theme-neon-btn-mobile" aria-label="霓虹" title="霓虹"></button>
+            <button id="theme-retro-btn-mobile" aria-label="复古" title="复古"></button>
+          </div>
+        </div>
+      </div>
+
+      <div id="game-container">
+        <canvas id="snake" width="480" height="480"></canvas>
+        <div id="game-overlay" style="display: flex;">
+          <div id="overlay-title">贪吃蛇</div>
+          <div id="overlay-score" style="display:none;">
+            <span class="score-label">分数</span>
+            <span class="score-value" id="overlay-score-value">0</span>
+          </div>
+          <div id="overlay-instructions">
+            <div class="inst-line desktop-only">控制：方向键 / WASD</div>
+            <div class="inst-line mobile-only">控制：按钮或滑动手势</div>
+            <div class="inst-line desktop-only">开始：回车　暂停：ESC</div>
+            <div class="inst-line">目标：吃食物增长，避免撞墙或自己</div>
+          </div>
+          <div id="overlay-controls">
+            <button id="overlay-button">开始游戏</button>
+          </div>
+          <div id="overlay-actions">
+            <button id="overlay-restart-btn" style="display:none;">重新开始</button>
+            <button id="overlay-leaderboard-btn" style="display:none;">排行榜</button>
+          </div>
+          <div id="overlay-leaderboard" style="display:none;"></div>
+          <button id="overlay-back-btn" style="display:none;">返回</button>
+          <form id="overlay-name-form" style="display:none;">
+            <div class="name-row">
+              <input id="name-input" type="text" placeholder="输入昵称" maxlength="16" />
+              <button id="name-save-btn" type="submit">保存</button>
+            </div>
+            <div id="overlay-congrats"></div>
+          </form>
+        </div>
+      </div>
+
+      <div id="right-panel" class="info-panel">
+        <div id="panel-stats" class="panel-block">
+          <div class="panel-heading">统计</div>
+          <div class="panel-body stats-body">
+            <div class="stat-row">
+              <div class="stat-label">分数</div>
+              <div class="stat-value" id="score-desktop">0</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-label">速度</div>
+              <div class="stat-value" id="level-desktop">1</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-label">时间</div>
+              <div class="stat-value" id="time-desktop">00:00</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-label">长度</div>
+              <div class="stat-value" id="length-desktop">3</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-block top-controls">
+          <div class="panel-heading">主题</div>
+          <div class="panel-body">
+            <button id="theme-neon-btn">霓虹</button>
+            <button id="theme-retro-btn">复古</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="mobile-controls">
+        <div class="dpad">
+          <button class="btn-up" id="btn-up">&#x25B2;&#xFE0E;</button>
+          <div class="middle">
+            <button class="btn-left" id="btn-left">&#x25C0;&#xFE0E;</button>
+            <button class="btn-right" id="btn-right">&#x25B6;&#xFE0E;</button>
+          </div>
+          <button class="btn-down" id="btn-down">&#x25BC;&#xFE0E;</button>
+        </div>
+      </div>
+
+
+    <!-- Dev-only SFX tester (toggle via ?dev=true) -->
+    <div class="sfx-tester" style="display:none;">
+      <select id="sfx-test-select"></select>
+      <button id="sfx-test-btn">播放音效</button>
+    </div>
+
+    <script type="module" src="assets/js/main.js"></script>
+  </body>
+  </html>
