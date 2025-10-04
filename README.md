@@ -2,6 +2,7 @@
 
 <div align="center">
   <p>一个桌面与移动端友好的经典贪吃蛇网页游戏</p>
+  <p><a href="https://zenvertao.github.io/snake-game/">🎮 在线演示</a></p>
   <p><a href="README.en.md">English</a> | 中文</p>
 </div>
 
@@ -10,7 +11,7 @@
 - PC 键盘操作，移动端方向按钮 + 触控手势
 - 本地 Top 10 排行榜（姓名与分数），上榜后内联输入昵称
 - 专为贪吃蛇设计的音效：开始、转向、吃到、死亡
-- 移动端适配：防双击缩放、底部 D‑pad 自适应布局
+- 移动端适配：防双击缩放、底部方向按钮自适应布局
 
 ## 🎮 操作说明
 - 桌面（PC）
@@ -37,7 +38,7 @@ npx http-server -p 8080
 .
 ├─ index.html                # 外联 CSS/JS 的单页
 ├─ assets/
-│  ├─ css/styles.css         # 样式（主题、移动端 D‑pad、覆盖层等）
+│  ├─ css/styles.css         # 样式（主题、移动端方向按钮、覆盖层等）
 │  └─ js/
 │     ├─ main.js             # 游戏循环、输入、覆盖层、主题、音频解锁
 │     ├─ core/

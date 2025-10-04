@@ -2,6 +2,7 @@
 
 <div align="center">
   <p>A classic Snake game for desktop and mobile</p>
+  <p><a href="https://zenvertao.github.io/snake-game/">🎮 Live Demo</a></p>
   <p>English | <a href="README.md">中文</a></p>
 </div>
 
@@ -10,7 +11,7 @@
 - Desktop keyboard control, mobile on‑screen arrow buttons + gestures
 - Local Top 10 leaderboard (name + score), inline name entry on qualify
 - Snake‑specific SFX: start, turn, eat, die
-- Mobile optimizations: prevent double‑tap zoom, adaptive bottom D‑pad
+- Mobile optimizations: prevent double‑tap zoom, adaptive on‑screen arrow buttons
 
 ## 🎮 Controls
 - Desktop (PC)
@@ -37,7 +38,7 @@ npx http-server -p 8080
 .
 ├─ index.html                # Single page with external CSS/JS
 ├─ assets/
-│  ├─ css/styles.css         # Styles (themes, mobile D‑pad, overlays)
+│  ├─ css/styles.css         # Styles (themes, mobile on‑screen arrow buttons, overlays)
 │  └─ js/
 │     ├─ main.js             # Game loop, input, overlays, theme, audio unlock
 │     ├─ core/
